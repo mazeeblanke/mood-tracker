@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
+import { IEmoji } from 'types';
 import Emoji from './Emoji';
 
 interface IEmojiInputProps {
@@ -6,17 +7,17 @@ interface IEmojiInputProps {
   symbol: string,
   type: string,
   isSelected: boolean,
-  onChange: (e: any, params: any) => void
+  onChange: (e: ChangeEvent, params: IEmoji) => void
 }
 
 const EmojiInput: FC<IEmojiInputProps> = ({ label, symbol, type, onChange, isSelected }) => {
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent) => {
     onChange(e, {label, symbol, type})
   }
     
   return (  
     <div className={`a-emojiinput`}>
-      <label htmlFor={label}>
+      <label htmlFor={type}>
         <Emoji 
           label={label} 
           symbol={symbol} 
@@ -28,7 +29,7 @@ const EmojiInput: FC<IEmojiInputProps> = ({ label, symbol, type, onChange, isSel
         onChange={handleChange} 
         name="mood" 
         type="radio" 
-        id={label} 
+        id={type} 
       />
     </div>
   );

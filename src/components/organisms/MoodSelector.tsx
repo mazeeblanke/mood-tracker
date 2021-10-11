@@ -14,30 +14,32 @@ const largeCat = require('assets/images/cat-large.png');
 interface IMoodSelectorProps extends IAddMoodAction {
 }
 
+const initState = () => ({
+  label: '',
+  symbol: '',
+  type: '',
+  id: '',
+  date: '',
+  time: ''
+})
+
 const MoodSelector: FC<IMoodSelectorProps> = ({ addMood }) => {
-  const [mood, setMood] = useState({
-    label: '',
-    symbol: '',
-    type: '',
-    id: ''
-  });
+  const [mood, setMood] = useState(initState());
 
   const handleInputChange = (e: ChangeEvent, params: any): void => {
+    const date = new Date()
     setMood({
       ...params,
-      id: uuidv4()
+      id: uuidv4(),
+      date: date.toLocaleDateString("en-US").replace(/\//g, '-'),
+      time: `${date.getHours()}:${date.getMinutes()}`,
     });
   };
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     addMood(mood)
-    setMood({
-      label: '',
-      symbol: '',
-      type: '',
-      id: ''
-    })
+    setMood(initState())
   };
 
   return (

@@ -6,6 +6,8 @@ export interface IEmoji {
 
 export interface IMood extends IEmoji {
   id: string,
+  date: string,
+  time: string
 }
 
 export interface IAddMoodAction {

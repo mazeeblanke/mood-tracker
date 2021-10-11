@@ -26,13 +26,13 @@ const MoodHistory: FC<IMoodHistoryProps> = ({ moods }) => {
         <div className="o-moodhistory__container">
           <TransitionGroup>
             {
-              moods.map(({type, label, symbol, id}) => (
+              moods.map(({type, label, symbol, id, date, time}) => (
                 <CSSTransition
                   key={id}
                   timeout={500}
                   classNames="o-moodhistory__item"
                 >
-                  <MoodPanel type={type} label={label} symbol={symbol} />
+                  <MoodPanel type={type} label={label} symbol={symbol} date={date} time={time} />
                 </CSSTransition>
               ))
             }
