@@ -16,14 +16,12 @@ WebFont.load({
 const store = initStore();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-        </Switch>
-      </Router>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
+    </Router>
+  </Provider>,
   document.getElementById('root'),
 );
