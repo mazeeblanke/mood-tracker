@@ -2,9 +2,9 @@ import { IEmoji } from "types";
 
 const EMOJIS: IEmoji[] = [
   {
-    label: 'super excited!',
-    symbol: '😃',
-    type: 'success'
+    label: "wasn’t having it",
+    symbol: '😖',
+    type: 'danger'
   },
   {
     label: 'indifferent',
@@ -12,9 +12,9 @@ const EMOJIS: IEmoji[] = [
     type: 'warning'
   },
   {
-    label: "wasn’t having it",
-    symbol: '😖',
-    type: 'danger'
+    label: 'super excited!',
+    symbol: '😃',
+    type: 'success'
   }
 ]
 
