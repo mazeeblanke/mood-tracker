@@ -1,0 +1,40 @@
+// Heading Fonts 
+$f-head:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small': $n700-01,
+  )
+);
+
+@mixin f-head() {
+  @include font-styles($f-head);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-head,
+.f-head {
+  @include f-head;
+}
+
+$f-subhead:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small': $n600-02,
+  )
+);
+
+@mixin f-subhead() {
+  @include font-styles($f-subhead);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-subhead,
+.f-subhead {
+  @include f-subhead;
+}

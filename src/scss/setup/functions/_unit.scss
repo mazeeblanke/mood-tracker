@@ -1,0 +1,36 @@
+@function rem-calc($value, $base: null) {
+  @if $base == null {
+    $base: $global-font-size;
+  }
+
+  @if unit($base) == "%" {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if unit($base) == "rem" {
+    $base: strip-units($base) * 16px;
+  }
+
+  @if type-of($value) != number {
+    @warn inspect($value) + ' was passed is rem-calc and is not a number';
+    @return $value;
+  }
+
+  @if unit($value) == "em" {
+    $value: strip-units($value) * 1rem;
+  }
+
+  @if unit($value) != "rem" {
+    $value: (strip-units($value) / strip-units($base)) * 1rem;
+  }
+
+  @if $value == 0rem {
+    @return 0;
+  }
+
+  @return $value;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}

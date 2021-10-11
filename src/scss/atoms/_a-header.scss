@@ -1,0 +1,10 @@
+.a-header {
+  @extend %container;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  &__text {
+    @extend %f-head;
+    margin: 0;
+  }
+}

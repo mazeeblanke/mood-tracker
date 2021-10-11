@@ -1,0 +1,104 @@
+// Body Fonts 
+$f-body-01:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small': $n700-01
+  )
+);
+
+@mixin f-body-01() {
+  @include font-styles($f-body-01);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-body-01,
+.f-body-01 {
+  @include f-body-01;
+}
+
+
+$f-body-02:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small':$n600-03
+  )
+);
+
+@mixin f-body-02() {
+  @include font-styles($f-body-02);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-body-02,
+.f-body-02 {
+  @include f-body-02;
+}
+
+
+$f-body-03:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small':$n700-02
+  )
+);
+
+@mixin f-body-03() {
+  @include font-styles($f-body-03);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-body-03,
+.f-body-03 {
+  @include f-body-03;
+}
+
+
+
+$f-body-04:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small': $n700-03
+  )
+);
+
+@mixin f-body-04() {
+  @include font-styles($f-body-04);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-body-04,
+.f-body-04 {
+  @include f-body-04;
+}
+
+$f-body-05:(
+  font-family: $sans-serif-font,
+  font-family-loaded: $sans-serif-font--loaded,
+  font-loaded-class: $sans-serif-font-loaded-class,
+  settings: (
+    'small': $n600-01
+  )
+);
+
+@mixin f-body-05() {
+  @include font-styles($f-body-05);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+%f-body-05,
+.f-body-05 {
+  @include f-body-04;
+}

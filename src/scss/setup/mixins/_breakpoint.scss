@@ -1,0 +1,20 @@
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($map: $breakpoints-with-directions, $key: $breakpoint) {
+    $breakpoint: map-get($map: $breakpoints-with-directions, $key: $breakpoint);
+    $rule: 'screen ';
+    $start: map-get($map: $breakpoint, $key: 'start');
+    $end: map-get($map: $breakpoint, $key: 'end');
+
+    @if $start != null {
+      $rule: $rule + 'and (min-width: ' + $start + 'px)';
+    }
+
+    @if $end != null {
+      $rule: $rule + 'and (max-width: ' + $end + 'px)';
+    }
+    
+    @media #{$rule} {
+      @content; 
+    }
+  }
+}

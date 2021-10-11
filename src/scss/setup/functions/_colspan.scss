@@ -1,0 +1,70 @@
+/*
+  @function colspan
+
+  Returns a calc() that represents a column span
+
+  Parameters:
+  $number-of-columns - the number of columns you want to span
+  $breakpoint - at which breakpoint
+  $bump - if you want the colspan + an arbitrary number
+  $inverse - if you want to return a negative number (to move things backwards)
+
+  NB: only works with breakpoint names, not the +/- variants
+*/
+@function colspan(
+  $number-of-columns: 1,
+  $breakpoint: "xsmall",
+  $bump: 0px,
+  $inverse: false
+) {
+  @if map-has-key($breakpoints-with-directions, $breakpoint) {
+    $this-bp-main-col-width: map-get($main-col-widths, $breakpoint);
+    $this-bp-inner-gutter: map-get($inner-gutters, $breakpoint);
+    $this-bp-outer-gutter: map-get($outer-gutters, $breakpoint);
+    $this-bp-total-cols: map-get($column-count, $breakpoint);
+
+    @if ($number-of-columns >= $this-bp-total-cols) {
+      @if ($this-bp-main-col-width == "fluid") {
+        @return calc(100vw - #{2 * $this-bp-outer-gutter});
+      } @else {
+        @return $this-bp-main-col-width;
+      }
+    } @else {
+      @if ($this-bp-main-col-width == "fluid") {
+        $this-calc: "((100vw - #{(($this-bp-total-cols - 1) * $this-bp-inner-gutter) + (2 * $this-bp-outer-gutter)}) / #{$this-bp-total-cols}) * #{$number-of-columns}";
+
+        @if ($number-of-columns >= 1) {
+          $this-calc: "(#{$this-calc}) + #{($number-of-columns - 1) * $this-bp-inner-gutter}";
+        }
+
+        @if ($bump != 0px) {
+          $this-calc: "(#{$this-calc}) + #{$bump}";
+        }
+
+        @if ($inverse) {
+          $this-calc: "(#{$this-calc}) * -1";
+        }
+
+        @return calc(#{$this-calc});
+      } @else {
+        $this-multiplier: 1;
+        @if ($inverse) {
+          $this-multiplier: -1;
+        }
+
+        @return #{(
+            (
+                (
+                    (
+                        (
+                            $this-bp-main-col-width - ($this-bp-total-cols - 1) *
+                              $this-bp-inner-gutter
+                          ) / $this-bp-total-cols
+                      ) * $number-of-columns
+                  ) + ($number-of-columns - 1) * $this-bp-inner-gutter
+              ) + $bump
+          ) * $this-multiplier};
+      }
+    }
+  }
+}

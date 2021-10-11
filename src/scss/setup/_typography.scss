@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Nunito';
+  src: url(../../assets/fonts/Nunito/Nunito-Bold.woff2) format('woff2'),
+  url(../../assets/fonts/Nunito/Nunito-Bold.woff) format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url(../../assets/fonts/Nunito/Nunito-SemiBold.woff2) format('woff2'),
+  url(../../assets/fonts/Nunito/Nunito-SemiBold.woff) format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// set to 100% to use the browsers font size as a base
+$global-font-size: 100% !default;
+
+$sans-serif-font: sans-serif;
+$sans-serif-font--loaded: 'Nunito', #{$sans-serif-font};
+$sans-serif-font-loaded-class: 'wf-nunito-n4-active';
+
+@import 'typography/base/nunito-600';
+@import 'typography/base/nunito-700';
+
+@import 'typography/heading';
+@import 'typography/body';

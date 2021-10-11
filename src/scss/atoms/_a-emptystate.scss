@@ -1,0 +1,21 @@
+.a-emptystate {
+  width: 345px;
+  height: 264px;
+  border: 1px solid $color__gray-50;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  p {
+    @extend %f-body-05;
+    margin-top: 13px;
+    margin-bottom: 0px;
+    width: 122px;
+    color: $color__gray-05;
+  }
+}

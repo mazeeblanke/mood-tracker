@@ -1,0 +1,29 @@
+.a-emoji {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  &--default {
+    background-color: $color__background--light;
+    border: 2px solid transparent;
+  }
+
+  &--success {
+    background-color: $color__bg-green;
+    border: 2px solid $color__text-green;
+  }
+
+  &--warning {
+    background-color: $color__bg-orange;
+    border: 2px solid $color__text-orange;
+  }
+
+  &--danger {
+    background-color: $color__bg-red;
+    border: 2px solid $color__text-red;
+  }
+}

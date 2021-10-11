@@ -1,0 +1,98 @@
+@mixin font-styles ($styles, $bolder-weight: false) {
+  $font-family: map-get($map: $styles, $key: font-family);
+  $settings: map-get($map: $styles, $key: settings);
+  $font-family-loaded: map-get($map: $styles, $key: font-family-loaded);
+  $font-loaded-class: map-get($map: $styles, $key: font-loaded-class);
+
+  // set base font family
+  @if $font-family {
+    font-family: $font-family;
+  }
+
+  @if $bolder-weight {
+    b,
+    strong {
+      font-weight: $bolder-weight;
+    }
+  } @else {
+    b,
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+
+  // set font family when font loaded class, if exists
+  @if $font-family-loaded and $font-loaded-class {
+    .#{$font-loaded-class} & {
+      font-family: $font-family-loaded;
+    }
+  }
+
+  @each $breakpoint, $font-definitions in $settings {
+    @if map-has-key($map: $breakpoints-with-directions, $key: $breakpoint) {
+      $font-size: map-get($font-definitions, font-size);
+      $line-height: map-get($font-definitions, line-height);
+      $font-weight: map-get($font-definitions, font-weight);
+      $font-style: map-get($font-definitions, font-style);
+      $letter-spacing: map-get($font-definitions, letter-spacing);
+      $font-transform: map-get($font-definitions, text-transform);
+      $font-feature-settings: map-get($font-definitions, font-feature-settings);
+
+      // // check if this is the smallest breakpoint (the default font setting)
+      @if (index(map-keys($settings), $breakpoint) == 1) {
+        @include font-style(
+          $font-weight,
+          $font-transform,
+          $line-height,
+          $font-size,
+          $letter-spacing
+        );
+      } 
+      @else {
+        @include breakpoint(#{$breakpoint}) {
+          @include font-style(
+            $font-weight,
+            $font-transform,
+            $line-height,
+            $font-size,
+            $letter-spacing
+          );
+        }
+      }
+    }
+  }
+}
+
+@mixin font-style (
+  $font-weight: false,
+  $font-transform: false,
+  $line-height: false,
+  $font-size: false,
+  $letter-spacing: false
+) {
+
+  @if $font-size {
+    font-size: rem-calc($font-size);
+  }
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+
+  @if $line-height {
+    line-height: $line-height;
+  }
+
+  @if $font-transform {
+    text-transform: $font-transform
+  }
+
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing
+  }
+}

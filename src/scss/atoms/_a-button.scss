@@ -1,0 +1,16 @@
+.a-button {
+  @extend %f-body-02;
+  background-color: $color__gray-90;
+  border-radius: 5px;
+  width: 134px;
+  height: 41px;
+  color: $color__white;
+  cursor: pointer;
+  border-style: none;
+  transition: all 0.2s ease-in-out;
+
+  &--disabled {
+    cursor: not-allowed;
+    background-color: $color__gray-06;
+  }
+}

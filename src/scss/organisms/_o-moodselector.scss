@@ -1,0 +1,66 @@
+$column-spans: (
+  xsmall: 6,
+  small: 12,
+  medium: 12,
+  large: 6,
+  xlarge: 6,
+);
+
+.o-moodselector {
+  height: 577px;
+  border: 1px solid $color__gray-20;
+  box-sizing: border-box;
+  border-radius: 15px;
+  @include column-flex($column-spans);
+  text-align: center;
+  margin-top: 80px;
+
+  @include breakpoint('large+') {
+    margin-top: 0px;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    @extend %f-body-01;
+    color: $color__gray-30;
+    width: 256px;
+  }
+
+  &__input-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 37px;
+    flex-wrap: wrap;
+  }
+
+  .a-button {
+    margin-top: 44px;
+  }
+
+  &__status {
+    @extend %f-body-03;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    height: 26px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  &__status--success {
+    color: $color__text-green;
+    opacity: 1;
+  }
+
+  &__status--danger {
+    color: $color__text-red;
+    opacity: 1;
+  }
+
+  &__status--warning {
+    color: $color__text-orange;
+    opacity: 1;
+  }
+}

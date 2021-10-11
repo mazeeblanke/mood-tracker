@@ -1,0 +1,76 @@
+$column-spans: (
+  xsmall: 6,
+  small: 12,
+  medium: 12,
+  large: 6,
+  xlarge: 6
+);
+
+.o-moodhistory {
+  @include column-flex($column-spans);
+  display: flex;
+  flex-direction: column;
+  min-height: 557px;
+  align-items: center;
+  margin-top: 40px;
+
+  @include breakpoint("large+") {
+    margin-top: 0;
+  }
+
+  &__container {
+    max-height: 400px;
+    overflow-y: scroll;
+    @include breakpoint("medium-") {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend %f-head;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    justify-content: center;
+
+    span {
+      margin-left: 10px;
+    }
+  }
+
+  &__subtitle {
+    @extend %f-subhead;
+    color: $color__gray-40;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 24px;
+  }
+
+  &__item-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  &__item-enter-active {
+    opacity: 1;
+    transition: opacity .8s ease-in-out, transform .3s ease-in-out;
+    transform: translateY(0%);
+    transition-delay: .1s;
+  }
+
+  &__item-exit {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  &__item-exit-active {
+    opacity: 0;
+    transition: opacity .8s ease-in-out, transform .3s ease-in-out;
+    transform: translateY(-100%);
+  }
+
+  .a-emptystate {
+    margin-top: 30px;
+  }
+}
